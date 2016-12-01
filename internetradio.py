@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
 # Internet Radio Client using Shoutcast service
-# to search and play channels
-# Copyright (C) 2016 by Visteon Corporation
-# Rahul Pathak: rpathak@visteon.com
+# to search and play random channels with genre search
+# Usuage ./internetradio.py --genre <GENRE>
+
 
 import os
 import logging
@@ -12,27 +12,22 @@ import requests as rq
 import xml.etree.ElementTree as et
 
 #----------------------------------------------------------------------------------------
+# Set your shoutcast devId here
+#----------------------------------------------------------------------------------------
+devId = ""
+
+#----------------------------------------------------------------------------------------
 logging.basicConfig(format='%(levelname)s %(asctime)s %(message)s', level=logging.INFO)
 log = logging.getLogger(__name__)
-#----------------------------------------------------------------------------------------
-try:
-    from visteonproxy import *
-except ImportError:
-    log.debug("Proxy settings are required if in Visteon Network\nCheck python \"requests\" \
-module for details and add the proxy details in visteonproxy.py")
 
-#proxies = ""
 #----------------------------------------------------------------------------------------
 baseUrl = "http://api.shoutcast.com/"
 tuneinUrl = "http://yp.shoutcast.com/"
 base = "sbin/tunein-station.pls"
-randomSearch = "station/randomstations?k=lXBCPppNpZXRpoyJ&f=xml&mt=audio/mpeg&limit=1&genre="
+randomSearch = "station/randomstations?k={0}&f=xml&mt=audio/mpeg&limit=1&genre=".format(devId)
 #----------------------------------------------------------------------------------------
 
-# For Laptop
 playerCommand = "mplayer -quiet  {0}\n"
-# For W207
-#playerCommand = "gst-launch souphttpsrc location={0} ! mp3parse ! ffdec_mp3 ! audioconvert ! audioresample ! alsasink device=plug:default > /dev/null"
 
 #----------------------------------------------------------------------------------------
 def keywordSearch(keyword):
