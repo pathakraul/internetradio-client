@@ -1,7 +1,5 @@
 # internetradio-client
-A small internet radio client in python using shoutcast service apis
-
-I will continue to add more features and support for new ways to search  shoutcast channels
+A small internet radio client in python using shoutcast service apis. Currently the client supports random channel search for a particular genre provided as an argument to the script
 
 #Usage
 ./internetradio.py --genre <GENRE>
