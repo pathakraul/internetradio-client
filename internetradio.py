@@ -2,7 +2,7 @@
 
 # Internet Radio Client using Shoutcast service
 # to search and play random channels with genre search
-# Usuage ./internetradio.py --genre <GENRE>
+# Usage ./internetradio.py --genre <GENRE>
 
 
 import os
